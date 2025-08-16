@@ -25,6 +25,10 @@
   color: white;
 }
 
+.blurred {
+  filter: blur(5px);
+}
+
 /* Grid container */
 
 .GridContainer {
@@ -87,4 +91,50 @@
   position: absolute;
   opacity: 0.3;
   top: calc(50% - (60vh/3)/2);
+}
+
+
+/* Problem window */
+
+.hide {
+  display: none;
+}
+
+.ProblemWindowContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.ProblemWindow{
+  background-color: white;
+  width: 60vw;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-radius: 4%;
+}
+
+.closeButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 30px;
+  height: 30px;
+  background-color: red;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 99;
+}
+
+.closeButton:hover {
+  background-color: darkred;
 }
