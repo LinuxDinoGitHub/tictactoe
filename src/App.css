@@ -1,0 +1,90 @@
+/* variables */
+:root {
+  --gridSize: 60vw;
+  --gapSize: 10px;
+  --background: #736B92;
+  --gridItemColor: #9593D9;
+  --gridItemTextColor: #7D5C65;
+  --accentColor: #7C90DB;
+  --textColor: #E5BEED;
+}
+
+/* Main app */
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: var(--background);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+/* Grid container */
+
+.GridContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px;
+  max-height: 60vh;
+  max-width: 60vh;
+  height: calc(var(--gridSize)+3*var(--gapSize)); /* 300px for grid items + 30px for gaps */
+  width: calc(var(--gridSize)+3*var(--gapSize));
+  margin: auto;
+}
+
+/* Grid item */
+
+.GridItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--gridItemColor);
+  max-height: calc(60vh/3);
+  max-width: calc(60vh/3);
+  height: calc(var(--gridSize) / 3);
+  width: calc(var(--gridSize) / 3);
+  cursor: pointer;
+  color: var(--textColor);
+  border-radius: 5px;
+  transition: 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.GridItem:hover {
+  background-color: var(--accentColor);
+}
+
+/* Grid item content */
+
+.GridBox{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  height: auto;
+  width: auto;
+}
+
+.PreviewText {
+  font-size: 2rem;
+  color: var(--TextColor);
+  text-align: center;
+  margin-bottom: 10px;
+  z-index: 2;
+}
+
+.PreviewImage {
+  width: calc(var(--gridSize) / 3);
+  height: auto;
+  max-width: calc(60vh/3);
+  position: absolute;
+  opacity: 0.3;
+  top: calc(50% - (60vh/3)/2);
+}
