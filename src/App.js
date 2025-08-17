@@ -8,23 +8,27 @@ for (let i = 0; i < 9; i++) {
     problems.push(["Find x",i]); // Replace with actual problem content
 }
 problems[2] = ["Find y", 2, "https://picsum.photos/200/300"]; // Example image problem
-
+problems[7] = ["Find y", 7, "https://picsum.photos/200"]; // Example image problem
 
 function App() {
   const [showMenu, setShowMenu] = useState(false);
-  const [menuContent, setMenuContent] = useState([]);
+  const [menuContent, setMenuContent] = useState([...problems]);
+  const [problemIndex, setProblemIndex] = useState(0);
   return (
     <div className="App">
       <header className={showMenu ? "App-header blurred" : "App-header"}>
         <Grid 
-        content={problems} 
-        setShowMenu={setShowMenu} 
-        menuContent={setMenuContent}/>
+        content={menuContent}
+        setProblemIndex={setProblemIndex}
+        setShowMenu={setShowMenu}
+        />
       </header>
       <ProblemWindow 
+        setMenuContent={setMenuContent}
         menuContent={menuContent} 
         setShowMenu={setShowMenu}
         showMenu={showMenu} 
+        problemIndex={problemIndex}
         />
     </div>
   );
