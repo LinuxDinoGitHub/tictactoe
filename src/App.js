@@ -29,6 +29,7 @@ function App() {
         setShowMenu={setShowMenu}
         showMenu={showMenu} 
         problemIndex={problemIndex}
+        userID = {"Circle"} //Replace later with user ID
         />
     </div>
   );

@@ -1,15 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-function ProblemWindow({ menuContent, setShowMenu, showMenu, setMenuContent, problemIndex }) {
+function ProblemWindow({ menuContent, setShowMenu, showMenu, setMenuContent, problemIndex , userID }) {
     const [submitted, setSubmitted] = useState(false);
-    const [userAnswer, setUserAnswer] = useState('');;
+    const [userAnswer, setUserAnswer] = useState('');
+    const newContent = useRef(menuContent);
+    console.log(newContent.current);
     useEffect(() => {
         setUserAnswer('');
         setSubmitted(false);
     }, [problemIndex]);
+    function correctAnswer() {
+        newContent.current[problemIndex].push(userID);
+        setMenuContent(newContent);
+        setTimeout(() => {
+            setShowMenu(false);
+        }, 1000);
+    }
     return (
         <div className={showMenu ? "ProblemWindowContainer" : "hide"} onClick={() => setShowMenu(false)}>
+{/* Implement feature to show box has been taken */}
             <div className="ProblemWindow" onClick={(e) => e.stopPropagation()}>
+                {/* <div className={}></div> */}
                 <div className='closeButton' onClick={() => setShowMenu(false)}></div>
                 <div className='ProblemContent'>
                     <p>{menuContent[problemIndex][0]}</p>
@@ -27,6 +38,7 @@ function ProblemWindow({ menuContent, setShowMenu, showMenu, setMenuContent, pro
                         <p className={submitted ? "CorrectAnswer" : "hide"}>Correct!</p> : 
                         <p className={submitted ? "WrongAnswer" : "hide"}>Wrong answer, try again!</p>
                     }
+                    {userAnswer === String(menuContent[problemIndex][1]) && submitted ? correctAnswer(): null}
                     <button className="SubmitButton" onClick={() => {setSubmitted(true)}}>Submit</button>
                 </div>
             </div>
